@@ -11,7 +11,6 @@
  * function sheetPopup("Lorem ipsum.","Caption this",5)
  * ```
  */
-
 function sheetsPopup(message, tittle, timeoutSeconds)
 {
 

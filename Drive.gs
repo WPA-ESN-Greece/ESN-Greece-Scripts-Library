@@ -18,3 +18,4 @@ function createNewFolder(parentFolderID, newFolderName)
 
   return destinationFolder.getId()
 }
+

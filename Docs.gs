@@ -1,5 +1,11 @@
 // Text Replace for Docs
-
+/**
+ * Replaces a specific target text with a new value in a Google Docs document.
+ * 
+ * @param {string} docID - The ID of the Google Docs document.
+ * @param {string} target - The text to be replaced.
+ * @param {string} value - The new text to replace the target.
+ */
 function replaceTextDoc(docID, target, value)
 {
   var body = DocumentApp.openById(docID).getBody()
