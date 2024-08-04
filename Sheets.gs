@@ -64,6 +64,32 @@ function linkCellContents(label, url, sheet, cell, style) // Make style optional
  range.setRichTextValue(richValue.build());
 }
 
+/**
+ * Searches for a column with a specified name in a Google Sheets spreadsheet.
+ *
+ * @param {string} columnName - The name of the column to search for.
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - The Google Sheets sheet to search within.
+ * @returns {number} The index of the found column (1-based), or -1 if not found.
+ *
+ * ```
+ * // Example usage:
+ * var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+ * var columnName = "Name"; // Replace with the desired column name.
+ * var columnIndex = searchForColumnNamed(columnName, sheet);
+ * if (columnIndex !== -1) {
+ *   Logger.log("Column '" + columnName + "' found at index: " + columnIndex);
+ * } else {
+ *   Logger.log("Column '" + columnName + "' not found.");
+ * }
+ * ```
+ */
+function searchForColumnNamed(columnName, sheet)
+{
+  var firstRowValues = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+  
+  var wantedColumnIndex = findArrayIndexOfText(firstRowValues, columnName)
+  return wantedColumnIndex
+}
 
 //Documentation Link pop-up / Dialog
 

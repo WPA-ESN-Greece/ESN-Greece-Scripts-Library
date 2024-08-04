@@ -6,8 +6,7 @@
  * @param {string} target - The text to be replaced.
  * @param {string} value - The new text to replace the target.
  */
-function replaceTextDoc(docID, target, value)
-{
+function replaceTextDoc(docID, target, value) {
   var body = DocumentApp.openById(docID).getBody()
 
   body.replaceText(target, value)
@@ -16,8 +15,7 @@ function replaceTextDoc(docID, target, value)
 
 // Create PDF from Doc
 
-function creatPDFFromDoc(docID, pdfName, outputFolderID, returnURL)
-{
+function creatPDFFromDoc(docID, pdfName, outputFolderID, returnURL) {
   var outputFolder = DriveApp.getFolderById(outputFolderID)
 
   tempDoc = DriveApp.getFileById(docID)

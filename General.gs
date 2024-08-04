@@ -74,7 +74,6 @@ function dayOfTheWeek(string) {
 
 
 //A function that calculates the next day of the week.
-
 function nextDay(date, dayName) 
 {
 
@@ -96,50 +95,32 @@ function nextDay(date, dayName)
 
 
 // Gets the ID of a google doc file (Doc, spredsheet, presentation, form), folder or script from its URL.
-
 function extractDocumentIdFromUrl(url) 
 {
-  var parts = url.split('/')
-  Logger.log(parts[4])
+  let parts = url.split('/')
 
-  if (parts[4] == "d")
-  {
-    var idIndex = parts.indexOf('d') + 1
-    Logger.log(parts = url.split('/'))
+  if (parts[4] == "d") {
+    let idIndex = parts.indexOf('d') +1
 
-    if (idIndex > 0 && idIndex < parts.length) 
-    {
-      Logger.log(parts[idIndex])
-      return parts[idIndex]
-    } 
-    else 
-    {
+    if (idIndex > 0 && idIndex < parts.length) {return parts[idIndex]} 
+    else {
       // If the URL doesn't contain the expected parts
       Logger.log("Invalid URL")
       return "Invalid URL"
     }
   }
 
-  if (parts[4] == "folders" || parts[4] == "projects" )
-  {
-    var idIndex = 5
-    Logger.log(parts = url.split('/'))
+  if (parts[4] == "folders" || parts[4] == "projects" ) {
+    let idIndex = 5
 
-    if (idIndex > 0 && idIndex < parts.length) 
-    {
-      Logger.log(parts[idIndex])
-      return parts[idIndex]
-    }
-    else 
-    {
+    if (idIndex > 0 && idIndex < parts.length) {return parts[idIndex]}
+    else {
       // If the URL doesn't contain the expected parts
       Logger.log("Invalid URL")
       return "Invalid URL";
     }
   }
-
-  else
-  {
+  else {
     Logger.log("Unknown type of URL")
     return "Unknown type of URL"
   }
@@ -176,4 +157,20 @@ function checkGroupMembership()
     Logger.log(userEmail + " is not a member of the group.");
     return false
   }
+}
+
+
+// Function to select a column from the matrix without a loop
+function getMatrixColumn(matrix, columnIndex) {
+  
+  // Error handling. 
+  if (columnIndex > matrix[0].length -1) {throw Error(`Column Index is larger than the Matrix length.`)}
+  if (columnIndex < 0) {throw Error(`Column Index is a negatve number.`)}
+  
+  // Puts all elements of an array of arrays or matrix or a sheet column in a 1 dimensional array.
+  let output = matrix.map(function(row) {
+    return row[columnIndex]
+  })
+
+  return output
 }
