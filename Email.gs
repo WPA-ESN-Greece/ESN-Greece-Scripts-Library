@@ -5,16 +5,11 @@
  * @param {string} subject The subject line of the email.
  * @param {string} emailBody The body content of the email.
  * @param {object} pdf The PDF object representing the attachment.
- * @param {string} [senderName="Unknown"] The name of the sender (optional).
+ * @param {string} [senderName=""] The name of the sender (optional).
  *
  * @throws {AppsScriptException} Throws an error if the email fails to send.
  */
-function emailPDFAttachment(emailAddress, subject, emailBody, pdf, senderName = "Unknown") 
-{
-  if (senderName)
-  {
-    message.name = senderName
-  }
+function emailPDFAttachment(emailAddress, subject, emailBody, pdf, senderName = '') {
 
   let message = {
     to: emailAddress,
@@ -22,6 +17,8 @@ function emailPDFAttachment(emailAddress, subject, emailBody, pdf, senderName = 
     body: emailBody,
     attachments: [pdf]
   }
+
+  if (senderName !== '') { message.name = senderName}
 
   MailApp.sendEmail(message)
 }
